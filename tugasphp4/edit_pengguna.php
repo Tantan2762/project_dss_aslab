@@ -1,4 +1,15 @@
 <?php 
+ session_start();
+ 
+
+if(isset($_SESSION['is_login']) && $_SESSION['is_login'] == true){
+ $_SESSION['email'];
+ $_SESSION['password'];
+} else {
+    echo "<script>window.location='login.php';</script>";
+}
+?>
+<?php 
 include 'koneksidb.php';
 
 

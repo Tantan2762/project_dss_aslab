@@ -1,4 +1,16 @@
 <?php 
+ session_start();
+ 
+
+if(isset($_SESSION['is_login']) && $_SESSION['is_login'] == true){
+ $_SESSION['email'];
+ $_SESSION['password'];
+} else {
+    echo "<script>window.location='login.php';</script>";
+}
+?>
+
+<?php 
 include 'koneksidb.php';
 
 if(isset($_GET['hapus'])){
@@ -9,6 +21,8 @@ if(isset($_GET['hapus'])){
 
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +63,7 @@ if(isset($_GET['hapus'])){
             
             <tr class="text-center">
                 <td><?php echo $row['id']?></td>
-                <td><a href="" style="width: 5em; color:white" class="col btn btn-primary form-control my-2 mx-0" role="button">Detail</a>
+                <td><a href="detail_pengguna.php?id=<?php $id = $row['id']; echo $id; ?>" style="width: 5em; color:white" class="col btn btn-primary form-control my-2 mx-0" role="button">Detail</a>
                     <a href="edit_pengguna.php?id=<?php $id = $row['id']; echo $id; ?>" style="width: 5em; color:white" class="col btn btn-warning form-control my-2 mx-0" role="button">Edit</a>
                     <a href="tampil_data_pengguna.php?hapus=<?php $id = $row['id']; echo $id; ?>" style="width: 5em; color:white" class="col btn btn-danger form-control my-2 mx-0" role="button">Hapus</a></td>
                     

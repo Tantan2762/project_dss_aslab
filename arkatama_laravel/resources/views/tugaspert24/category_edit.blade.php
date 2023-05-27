@@ -64,7 +64,7 @@ https://templatemo.com/tm-545-finance-business
     </div>
 
     <header class="">
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg" style="background-color : green">
         <div class="container">
           <a class="navbar-brand" href="index.html"><h2>Arkatama Store Laravel</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,15 +73,16 @@ https://templatemo.com/tm-545-finance-business
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link" href="{{url('landing')}}">Home</a>
               </li>  
-            <li class="nav-item active">
+
+              <li class="nav-item active">
               <div class="dropdown">
                 <button class="btn btn-transparent dropdown-toggle nav-link" style="color: white;outline:none; background-color: transparent" type="button" data-toggle="dropdown">Dashboard
                 <span class=" caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a style="color:greenyellow" href="{{url('category')}}">Produk Kategori</a></li>
+                <li><a style="color:greenyellow" href="{{url('category')}}">Produk Kategori</a></li>
                   <li><a style="color:greenyellow" href="{{url('dproduk')}}">Daftar Produk</a></li>
                   <li><a style="color:greenyellow" href="{{url('grup')}}"> Grup Pengguna</a></li>
                   <li><a style="color:greenyellow" href="{{url('pengguna')}}">DaftarPengguna</a></li>
@@ -98,7 +99,6 @@ https://templatemo.com/tm-545-finance-business
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
-           
             </ul>
           </div>
         </div>
@@ -107,37 +107,33 @@ https://templatemo.com/tm-545-finance-business
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
-    
     <div class="main-banner header-text" id="top">
-        <div class="Modern-Slider">
-          <!-- Item -->
-          <div class="item item-1">
-            <div class="img-fill">
-                <div class="text-content">
-                  <h6>Hallo. Selamat Datang</h6>
-                  <h4>Ini Tugasnya<br> {{$namamhs}}</h4>
-                  <p>{{$deskripsi}}</p>
-                  <a href="{{url('category')}}" class="filled-button">Lihat Dashboard</a>
-                </div>
-            </div>
-          </div>
-          <!-- // Item -->
+        <div class="" id ="produk">
+          <!-- Form -->
+            <div class = "d-flex container p-5 m-5">
+            <div class = "col-3"></div>
+            <div class = "col-6">
+            <form action="/category-update" method="post">
+            @method('put')
+            @csrf
+            <h4 style="color:green">Tambah Kategori</h4>
 
-          <!-- Item -->
-                    <div class="item item-1">
-            <div class="img-fill">
-                <div class="text-content">
-                  <h6>Hallo. Selamat Datang</h6>
-                  <h4>Ini Tugasnya<br> {{$namamhs}}</h4>
-                  <p>{{$deskripsi}}</p>
-                  <a href="{{url('category')}}" class="filled-button">Lihat Dashboard</a>
-                </div>
+            <input type="hidden" name="id" class="form-control" value="{{$category->id}}">
+            <label style="color:green" for="">Nama Kategori</label>
+            <input type="text" name="nama_kategori" class="form-control" value="{{$category->nama_kategori}}">
+            <label style="color:green" for="">Kode</label>
+            <input type="text" name="kode" class="form-control" value="{{$category->kode}}">
+            <br>
+         
+            <input type="submit" value="Simpan" class="btn btn-primary">
+            </form>
             </div>
-          </div>
-          <!-- // Item -->
-      
+            <div class = "col-3"></div>
+            </div>
+          <!-- Form -->
         </div>
     </div>
+
 
     <!-- Footer Starts Here -->
     <footer>

@@ -73,15 +73,16 @@ https://templatemo.com/tm-545-finance-business
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link" href="{{url('landing')}}">Home</a>
               </li>  
-            <li class="nav-item active">
+
+              <li class="nav-item active">
               <div class="dropdown">
                 <button class="btn btn-transparent dropdown-toggle nav-link" style="color: white;outline:none; background-color: transparent" type="button" data-toggle="dropdown">Dashboard
                 <span class=" caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a style="color:greenyellow" href="{{url('category')}}">Produk Kategori</a></li>
+                <li><a style="color:greenyellow" href="{{url('category')}}">Produk Kategori</a></li>
                   <li><a style="color:greenyellow" href="{{url('dproduk')}}">Daftar Produk</a></li>
                   <li><a style="color:greenyellow" href="{{url('grup')}}"> Grup Pengguna</a></li>
                   <li><a style="color:greenyellow" href="{{url('pengguna')}}">DaftarPengguna</a></li>
@@ -98,7 +99,6 @@ https://templatemo.com/tm-545-finance-business
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
-           
             </ul>
           </div>
         </div>
@@ -107,37 +107,57 @@ https://templatemo.com/tm-545-finance-business
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
-    
     <div class="main-banner header-text" id="top">
-        <div class="Modern-Slider">
+        <div class="Modern-Slider" id ="produk">
           <!-- Item -->
           <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>Hallo. Selamat Datang</h6>
-                  <h4>Ini Tugasnya<br> {{$namamhs}}</h4>
-                  <p>{{$deskripsi}}</p>
-                  <a href="{{url('category')}}" class="filled-button">Lihat Dashboard</a>
-                </div>
-            </div>
-          </div>
-          <!-- // Item -->
+                    <table class="table table-striped " style="color:white">
+                      <h4 class="text-center">Daftar Pengguna</h4>
+                      <a class = "btn btn-primary m-1" href="/pengguna-create">Tambah Data</a>
+                          <thead>
+                              <tr>
+                              <th scope="col">No</th>
+                              <th scope="col">Nama Pengguna</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Aksi</th>
+                          
+                              
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @forelse($pengguna as $p)
 
-          <!-- Item -->
-                    <div class="item item-1">
-            <div class="img-fill">
-                <div class="text-content">
-                  <h6>Hallo. Selamat Datang</h6>
-                  <h4>Ini Tugasnya<br> {{$namamhs}}</h4>
-                  <p>{{$deskripsi}}</p>
-                  <a href="{{url('category')}}" class="filled-button">Lihat Dashboard</a>
+                              <tr>
+                              <th scope="row">{{$loop->iteration}}.</th>
+                              <td>{{$p->nama}}</td>
+                              <td>{{$p->email}}</td>
+                              
+                              <td>
+                                <a href="/pengguna-edit/{{$p->id}}" class="btn btn-warning">Edit</a>
+                                <a href="/pengguna-delete/{{$p->id}}" class="btn btn-danger">Delete</a>
+                              </td>
+
+                              </tr>
+                            
+                              @empty
+                              <p>Data Tidak Ada</p>
+
+                              @endforelse
+                          
+                          </tbody>
+
+                    </table>
                 </div>
             </div>
           </div>
+
+
           <!-- // Item -->
-      
         </div>
     </div>
+
 
     <!-- Footer Starts Here -->
     <footer>

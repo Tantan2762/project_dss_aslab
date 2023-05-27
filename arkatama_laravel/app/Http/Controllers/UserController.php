@@ -21,4 +21,5 @@ class UserController extends Controller
     public function detailin(){
         return view ('detail');
     }
+
 }

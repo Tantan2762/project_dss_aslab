@@ -9,6 +9,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DprodukController;
 use App\Http\Controllers\GrupController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\TgamController;
+use App\Http\Controllers\LendingController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -128,3 +133,20 @@ Route::get('/pengguna-edit/{id}', [PenggunaController::class, 'edit']);
 Route::put('/pengguna-update', [PenggunaController::class, 'update']);
 //Delete
 Route::get('/pengguna-delete/{id}', [PenggunaController::class, 'delete']);
+
+
+Route::get('/tgam', [TgamController::class, 'index']);
+Route::get('/tgam-create', [TgamController::class, 'create']);
+Route::post('/tgam-store', [TgamController::class, 'store']);
+
+
+//Tugas Pert 25
+Route::get('/lending', [LendingController::class, 'index']);
+Route::get('/lending', [DprodukController::class, 'index2']);
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);

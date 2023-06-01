@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengguna;
+use Illuminate\Support\Facades\Validator;
 
 class PenggunaController extends Controller
 {
@@ -20,6 +21,17 @@ class PenggunaController extends Controller
 
     public function store(Request $request) {
         
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|min:3' ,
+            'email' => 'required|min:3',
+          
+        ]);
+
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
         $pengguna= Pengguna::create([
             'nama' => $request -> nama,
             'email' => $request -> email,
@@ -37,6 +49,18 @@ class PenggunaController extends Controller
     }
 
     public function update(Request $request) {
+
+
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|min:3' ,
+            'email' => 'required|min:3',
+          
+        ]);
+
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
 
         $pengguna= Pengguna::find($request->id)->update([
             'nama' => $request -> nama,

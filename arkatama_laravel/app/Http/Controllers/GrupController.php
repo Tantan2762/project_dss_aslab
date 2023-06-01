@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Grup;
+use Illuminate\Support\Facades\Validator;
 
 class GrupController extends Controller
 {
@@ -19,6 +20,18 @@ class GrupController extends Controller
     } 
 
     public function store(Request $request) {
+        
+        $validator = Validator::make($request->all(), [
+            'nama_pengguna' => 'required|min:3' ,
+            'status' => 'required|min:3',
+          
+        ]);
+
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
         
         $grup= Grup::create([
             'nama_pengguna' => $request -> nama_pengguna,
@@ -37,6 +50,17 @@ class GrupController extends Controller
     } 
 
     public function update(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'nama_pengguna' => 'required|min:3' ,
+            'status' => 'required|min:3',
+          
+        ]);
+
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
 
         $grup= Grup::find($request->id)->update([
             'nama_pengguna' => $request -> nama_pengguna,

@@ -116,7 +116,19 @@ https://templatemo.com/tm-545-finance-business
             <form action="/category-update" method="post">
             @method('put')
             @csrf
-            <h4 style="color:green">Tambah Kategori</h4>
+            <h4 style="color:green">Edit Kategori</h4>
+
+            @if ($errors->any())
+              <div class="alert alert-primary mb-3 m-auto" style="width: 32rem;" role="alert">
+                <ul>
+                  @foreach ($errors->all() as $e)
+                    <li>
+                      {{$e}}
+                    </li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
 
             <input type="hidden" name="id" class="form-control" value="{{$category->id}}">
             <label style="color:green" for="">Nama Kategori</label>
